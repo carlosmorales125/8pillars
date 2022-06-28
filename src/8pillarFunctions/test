@@ -1,0 +1,44 @@
+const fibNth = (n) => {
+    if (n === 1) return 0;
+    if (n < 3) return 1;
+
+    let prev = 0;
+    let curr = 1;
+
+    for (let i = 2; i < n; i++) {
+        const next = curr + prev;
+        prev = curr;
+        curr = next;
+    } 
+
+    return curr;
+}
+
+const newTest = fibNth(10);
+
+const rFibNth = (n, prev, curr, counter) => {
+    if (n === 1) return 0;
+    if (n < 3) return 1;
+
+    if (counter < n) {
+        const next = curr +  prev;
+        prev = curr;
+        curr = next;
+        counter++;
+
+        return rFibNth(n, prev, curr, counter);
+    }
+
+    return curr;
+};
+
+const rTest = rFibNth(10, 0, 1, 2);
+
+const coolFib = (n) => {
+    if (n === 1) return 0;
+    if (n < 3) return 1;
+
+    return coolFib(n-1) + coolFib(n-2);
+}
+
+const coolTest = coolFib(10);
